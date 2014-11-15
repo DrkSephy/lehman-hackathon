@@ -1,14 +1,35 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Add Class</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <title>Add Class</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/instructor.css" rel="stylesheet">
+  </head>
+
+
 
 <body>
 	<form method="POST" action="{% url 'hack.views.addClass' %}">
 	{% csrf_token %}
 		<input type="submit" id="addClassButton" value="Add New Class" style="width:250px; height:100px"/>
 	</form>
+
+	<!--populate class for all classes in database, they will be buttons-->
+	{% for x in returnlist %}
+		<input type="submit" id="addClassButton" value="{{x}}" style="width:250px; height:100px"/><br>
+	{% endfor%}	
+
 </body>
 
 </html>
