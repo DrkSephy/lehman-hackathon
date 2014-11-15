@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container text-center">
 <form class="form-signin" method="post" action="{% url 'hack.views.authenticateUser' %}" role="form">
 {% csrf_token %}
 {% load bootstrap %}
@@ -19,11 +19,11 @@
 <table>
 <tr>
     
-    <td>{{form.username | bootstrap}}</td>
+    <td class="container text-center">{{form.username | bootstrap_horizontal}}</td>
 </tr>
 <tr>
    
-    <td>{{form.password | bootstrap}}</td>
+    <td class="container text-center">{{form.password | bootstrap_horizontal}}</td>
 </tr>
 </table>
 
