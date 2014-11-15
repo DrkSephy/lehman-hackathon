@@ -1,12 +1,6 @@
 body {
-	width: 400px;
+	
 	margin: 75px auto 0;
-}
-button.btn-new {
-	background-color: green;
-	color: white;
+	background-color: #5A7194;
 }
 
-button.btn-xl{
-	
-}
