@@ -14,5 +14,6 @@ class StudentDetails(forms.Form):
 	className = forms.CharField(max_length=20)
 
 class SendNotification(forms.Form):
-	class_name=forms.CharField(max_length=20)
+	class_name=forms.CharField(widget=forms.TextInput(attrs={'class' : 'btn-selector'}))
 	note = forms.CharField(widget=forms.Textarea)
+
