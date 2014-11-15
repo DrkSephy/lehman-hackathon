@@ -69,6 +69,7 @@ def notify(request):
 @csrf_protect
 def sendNotification(request):
 	if request.user.is_authenticated():
+		pdb.set_trace()
 
 		className = str(request.POST.get('class_name'))
 		note = request.POST.get('note')
@@ -81,7 +82,8 @@ def sendNotification(request):
 			send_email(subject, msg_body, str(rec.email))	
 			sendMessage(className, rec.number)
 
-		return render(request, 'notify.html', {"notifyMsg":"Messages sent successfully."})
+		# return render(request, 'notify.html', {"notifyMsg":"Messages sent successfully."})
+		return render(request, 'addclass.html',{'user':request.user, 'returnlist': AddClass.objects.all(), 'studentDetailsForm':StudentDetails(), 'notifyForm':SendNotification(), "notifyMessage":"Messages sent successfully"})
 
 
 
@@ -99,7 +101,7 @@ def logoutUser(request):
 
 def addClass(request):
 	# print "ADD NEWW CLASS PAGE"
-	return render(request, 'addclass.html',{'user':request.user, 'returnlist': AddClass.objects.all()})
+	return render(request, 'addclass.html',{'user':request.user, 'returnlist': AddClass.objects.all(), 'studentDetailsForm':StudentDetails(), 'notifyForm':SendNotification()})
 
 
 def base(request):
@@ -108,7 +110,7 @@ def base(request):
 
 def addDetailsToDB(request):
 	# pdb.set_trace()
-	phoneNumbers = request.POST.get('phoneNumbers')
+	phoneNumbers = str(request.POST.get('phoneNumbers'))
 	emails = request.POST.get('emails')
 	className = request.POST.get('className')
 
@@ -120,8 +122,8 @@ def addDetailsToDB(request):
 	for number, email in zip(phoneNumbers, emails):
 		student = StudentInfo.objects.get_or_create(number=str(number), email=str(email))	[0]
 		addClass.students.add(student)
-
-	return render(request, 'notify.html', {"msg":"Numbers added successfully"})
+	
+	return render(request, 'addclass.html', {'user':request.user, 'returnlist': AddClass.objects.all(), 'studentDetailsForm':StudentDetails(), "addNumbersMessage":"Numbers added successfully"})
 
 		
 
