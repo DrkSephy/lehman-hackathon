@@ -1,12 +1,15 @@
+import pdb
+from forms import *
+from models import *
+from send_sms import sendMessage
 from django.shortcuts import render
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as djangoLogin
 import pdb
 from django.contrib.auth.forms import UserCreationForm
-from models import *
 from django.views.decorators.csrf import csrf_protect
 from forms import *
-
+from send_email import send_email
 
 def signup(request):
 	return render(request, "signup.html")
@@ -65,8 +68,18 @@ def notify(request):
 
 @csrf_protect
 def sendNotification(request):
+
 	if request.user.is_authenticated():
 		print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
+
+	subject = 'Email Subject'
+    msg_body = 'This is a test e-mail'
+    recipient = ['nsbehackathon2014@gmail.com', 'cafe.mui@gmail.com', 'lsxliron@gmail.com', 'fitzgeralda2010@gmail.com', 'sephirothcloud1025@yahoo.com', 'ian.s.mcb@gmail.com']
+    for r in recipient:
+    	send_email(subject, msg_body, r)	
+	numbers = ['+13473282978']
+	sendMessage(numbers)
+    print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
 
 
 def addNumbers(request):

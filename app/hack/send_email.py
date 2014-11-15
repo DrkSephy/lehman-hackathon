@@ -53,8 +53,8 @@ def send_email(subject, msg_body, recipient):
 
 
 #test purpose
-if __name__ == '__main__':
-    subject = 'Email Subject'
-    msg_body = 'This is a test e-mail'
-    recipient = 'nsbehackathon2014@gmail.com'
-    send_email(subject, msg_body, recipient)
+#if __name__ == '__main__':
+#    subject = 'Email Subject'
+#    msg_body = 'This is a test e-mail'
+#    recipient = 'nsbehackathon2014@gmail.com'
+#    send_email(subject, msg_body, recipient)
