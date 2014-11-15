@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-    <title>Is It Cancelled - Instructor UI</title>
+    <title>Is It Cancelled? - Instructor UI</title>
 
     <!-- Bootstrap core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,18 +19,36 @@
 <body>
 	<!-- clickable class buttons -->
 	<div class="btn-group-vertical" role="group">
-		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Class-1</button>
-		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Class-2</button>
-		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Class-3</button>
-		<button type="button" class="btn btn-default btn-new">+ New Class</button>
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Class-1</button>
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Class-2</button>
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Class-3</button>
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-add" id="addBtn">+ New Class</button>
 	</div>
-	<!-- modal dialog -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!-- notify modal-->
+	<div class="modal fade" id="modal-cancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title" id="myModalLabel">Class Name</h4>
+					<h4 class="modal-title" id="cancelTitle">Notify - Class Name Here</h4>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- add modal -->
+	<div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Add - Class Name Here</h4>
 				</div>
 				<div class="modal-body">
 					...
@@ -48,5 +66,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="js/instructor.js"></script>
   </body>
 </html>
