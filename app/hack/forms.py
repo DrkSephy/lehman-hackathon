@@ -17,3 +17,5 @@ class SendNotification(forms.Form):
 	class_name=forms.CharField(widget=forms.TextInput(attrs={'class' : 'btn-selector'}))
 	note = forms.CharField(widget=forms.Textarea)
 
+class SearchFeedForm(forms.Form):
+	className = forms.CharField(max_length=20)
