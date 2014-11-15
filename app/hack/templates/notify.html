@@ -13,7 +13,48 @@
 
 	<form method="POST" action="{% url 'hack.views.addNumbers' %}">
 	{% csrf_token %}
-		<input type="submit" id="addNumbersButton" value="Add Numbers" style="width:250px; height:100px"/>
+		<input type="button" data-toggle="modal" data-target="#myModal" id="addNumbersButton" value="Add Numbers" style="width:250px; height:100px"/>
+	</form>
+
+
+	<!-- ADD NUMBERS MODAL -->
+	<form method='POST' action="{% url 'addDetailsToDB' %}">
+	{%csrf_token %}
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Student Details</h4>
+				</div>
+				<div class="modal-body">
+				<table>
+				<tr>
+				<td>
+				{{form.className.label_tag}}
+				</td>
+				<td>
+				{{form.className}}
+				</td>
+				<tr>
+				<td>
+					<h5>Phone Numbers:</h5>
+					{{form.phoneNumbers}}
+				</td>
+				<td style="margin-left:50px">
+					<h5>Emails:</h5>
+					{{form.emails}}
+					</td>
+					</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	</form>
 
 	<form method="POST" action="{% url 'hack.views.logoutUser' %}">

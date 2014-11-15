@@ -16,7 +16,7 @@ class StudentInfo(models.Model):
 
 class AddClass(models.Model):
 	class_name = models.CharField(max_length=200)
-	students = models.ManyToManyField(StudentInfo)
+	students = models.ManyToManyField(StudentInfo, null=True)
 
 	def __unicode__(self):
 		return self.class_name
