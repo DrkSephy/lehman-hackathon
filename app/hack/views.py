@@ -1,13 +1,11 @@
 import pdb
 from forms import *
 from models import *
+from send_sms import *
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
-
-
-
 
 # Create your views here.
 
