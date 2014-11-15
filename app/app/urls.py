@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^sendNotification/','hack.views.sendNotification', name='sendNotification'),
     url(r'^addNumbers/','hack.views.addNumbers', name='addNumbers'),
     url(r'^logoutUser/','hack.views.logoutUser', name='logoutUser'),
+    url(r'^base/','hack.views.base', name='base'),
 # )
 
 )
