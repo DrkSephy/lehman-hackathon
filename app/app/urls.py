@@ -16,7 +16,7 @@ urlpatterns = patterns('',
             template_name='register.html',
             form_class=UserCreationForm,
             success_url='hack.creat'
-    )),
+    ), name='registerPage'),
     # url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}),
 

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Notify</title>
-</head>
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+<!-- <title>Notify</title> -->
+<!-- </head> -->
 
+{% include 'base.html' %}
 <body>
 	<form method="POST" action="{% url 'hack.views.sendNotification' %}">
 	{% csrf_token %}
