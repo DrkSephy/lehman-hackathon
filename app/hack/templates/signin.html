@@ -1,19 +1,34 @@
+
 {% include 'base.html' %}
+
+<html lang="en">
+<head>
+    <title> Sign in </title>
+    <link rel="stylesheet" href="{{STATIC_URL}}/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}/css/body.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}/bootstrap/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
+</head>
+
 <body>
-<form method="post" action="{% url 'hack.views.authenticateUser' %}">
+<div class="container">
+<form class="form-signin" method="post" action="{% url 'hack.views.authenticateUser' %}" role="form">
 {% csrf_token %}
+{% load bootstrap %}
+<h2 class="form-signin-heading">Sign In</h2> 
 <table>
 <tr>
-    <td>{{form.username.label_tag}}</td>
-    <td>{{form.username}}</td>
+    
+    <td>{{form.username | bootstrap}}</td>
 </tr>
 <tr>
-    <td>{{form.password.label_tag}}</td>
-    <td>{{form.password}}</td>
+   
+    <td>{{form.password | bootstrap}}</td>
 </tr>
 </table>
 
-<input type="submit" value="login" />
+ <button class="btn btn-lg btn-primary" type="submit">Login</button>
 </form>
+</div>
 {{msg}}
 </body>
