@@ -12,3 +12,7 @@ class StudentDetails(forms.Form):
 	phoneNumbers = forms.CharField(widget=forms.Textarea)
 	emails = forms.CharField(widget=forms.Textarea)
 	className = forms.CharField(max_length=20)
+
+class SendNotification(forms.Form):
+	class_name=forms.CharField(max_length=20)
+	note = forms.CharField(widget=forms.Textarea)
