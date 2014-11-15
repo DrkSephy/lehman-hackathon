@@ -25,13 +25,6 @@ def sendMessage(numbers):
 	print message.sid
 
 
-def main():
-	numbers= ['+19177033349', '+13474840045', '+19174002767']
-	sendMessage(numbers)
-
-
-if __name__ == '__main__':
-	main()
 
 
 
