@@ -14,6 +14,7 @@ class StudentInfoAdmin(admin.ModelAdmin):
         (None, {'fields': ['number']}),
         (None, {'fields': ['email']})
     ]
+    list_display = ['email', 'number']
 
 admin.site.register(AddClass, AddClassAdmin)
 admin.site.register(StudentInfo, StudentInfoAdmin)
