@@ -1,0 +1,9 @@
+app/app/__init__.pyc
+app/app/settings.pyc
+app/app/urls.pyc
+app/app/wsgi.pyc
+app/hack/__init__.pyc
+app/hack/admin.pyc
+app/hack/migrations/__init__.pyc
+app/hack/models.pyc
+app/hack/views.pyc
