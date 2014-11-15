@@ -53,7 +53,7 @@ def authenticateUser(request):
 	
 	if user is not None:
 		djangoLogin(request, user)
-		return render(request, 'addclass.html',{'user':user})
+		return render(request, 'addclass.html',{'user':user, 'returnlist': AddClass.objects.all()})
 
 	#Case username and password are incorrect
 	else:
