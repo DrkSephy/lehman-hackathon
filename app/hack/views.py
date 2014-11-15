@@ -88,6 +88,7 @@ def addNumbers(request):
 
 def logoutUser(request):
 	logout(request)
+	return render(request, 'signin.html', {'form':LoginForm()})
 
 
 
@@ -95,5 +96,5 @@ def logoutUser(request):
 
 
 def base(request):
-	return render(request, 'base.html')
+	return render(request, 'base.html', )
 

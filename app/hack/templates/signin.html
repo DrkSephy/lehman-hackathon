@@ -1,11 +1,5 @@
-
-
-<!-- {% block content %} -->
-
-<!-- {% if form.errors %} -->
-<!-- <p>Your username and password didn't match. Please try again.</p> -->
-<!-- {% endif %} -->
-
+{% include 'base.html' %}
+<body>
 <form method="post" action="{% url 'hack.views.authenticateUser' %}">
 {% csrf_token %}
 <table>
@@ -22,4 +16,4 @@
 <input type="submit" value="login" />
 </form>
 {{msg}}
-{% endblock %}
+</body>
