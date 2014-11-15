@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,25 +10,25 @@
     <title>Add Class</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/instructor.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}/css/instructor.css" rel="stylesheet">
   </head>
-
 
 
 <body>
 	<form method="POST" action="{% url 'hack.views.addClass' %}">
 	{% csrf_token %}
-		<input type="submit" id="addClassButton" value="Add New Class" style="width:250px; height:100px"/>
+		<input type="submit" id="addClassButton" value="Add New Class" style="width:700px; height:100px"/>
 	</form>
 
 	<!--populate class for all classes in database, they will be buttons-->
-	{% for x in returnlist %}
-		<input type="submit" id="addClassButton" value="{{x}}" style="width:250px; height:100px"/><br>
-	{% endfor%}	
+	<div class="btn-group-vertical" role="group">
+		{% for x in returnlist %}
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel" style="width:700px">{{x}}</button>
+		{% endfor %}
+	</div>
 
 </body>
-
 </html>

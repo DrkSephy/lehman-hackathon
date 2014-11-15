@@ -14,35 +14,38 @@
 	{% include 'base.html' %}
     
     <div class='container text-center'>
-	<form class="form-signin" method="post" action="{% url 'hack.views.login' %}" role="form">
-    {% csrf_token %}
-    {% load bootstrap %}
-    <h2 class="form-signin-heading">Create Account</h2>    
+        <h2 class="form-signin-heading">Create Account</h2>
+        <br>
+    	<form class="form-signin" method="post" action="{% url 'hack.views.login' %}" role="form">
+        {% csrf_token %}
+        {% load bootstrap %}    
 
-    <table>
-    <tr>
-       
-        <td>{{ form.username | bootstrap_horizontal}}</td>
-    </tr>
-    
-
-    <tr>
+        <table>
+        <tr>
+           
+            <td class="container text-center">{{ form.username | bootstrap_horizontal}}</td>
+        </tr>
         
-        <td>{{ form.password1 | bootstrap_horizontal}}</td>
-    </tr>
-    <tr>
-   
-        <td>{{ form.password2 | bootstrap_horizontal }}</td>
-    </tr>
-    </table>
-    {{msg}}
 
-    <button class="btn btn-lg btn-primary" type="submit">Register</button>
-    <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-	
-    </div>  
-    </div>  
+        <tr>
+            
+            <td class="container text-center">{{ form.password1 | bootstrap_horizontal }}</td>
+        </tr>
+
+        <tr>
+       
+            <td class="container text-center" >{{ form.password2 | bootstrap_horizontal }}</td>
+        </tr>
+
+
+        </table>
+        {{msg}}
+
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>   
+
 
 </body>
 
