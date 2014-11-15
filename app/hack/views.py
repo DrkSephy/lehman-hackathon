@@ -1,10 +1,11 @@
+import pdb
+from forms import *
+from models import *
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-import pdb
 from django.contrib.auth.forms import UserCreationForm
-from models import *
 from django.views.decorators.csrf import csrf_protect
-from forms import *
+
 
 
 
