@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def send_email(subkect, msg_body, recipient):
+def send_email(subject, msg_body, recipient):
 	#sender information
     addr= 'nsbehackathon2014@gmail.com'
     username = 'nsbehackathon2014@gmail.com'
