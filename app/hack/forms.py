@@ -6,3 +6,9 @@ class LoginForm(forms.Form):
 	username = forms.CharField(max_length=20)
 	# password = forms.PasswordInput()
 	password = forms.CharField(label=("Password"), widget=forms.PasswordInput, required=False)
+
+
+class StudentDetails(forms.Form):
+	phoneNumbers = forms.CharField(widget=forms.Textarea)
+	emails = forms.CharField(widget=forms.Textarea)
+	className = forms.CharField(max_length=20)

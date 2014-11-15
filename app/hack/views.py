@@ -63,7 +63,7 @@ def authenticateUser(request):
 @csrf_protect
 def notify(request):
 	if request.user.is_authenticated():
-		return render(request, 'notify.html')
+		return render(request, 'notify.html', {'form':StudentDetails()})
 
 
 @csrf_protect
@@ -85,6 +85,9 @@ def sendNotification(request):
 def addNumbers(request):
 	if request.user.is_authenticated():
 		print "\n\n\t\tAUTH\n\n\n"
+		return render(request, 'addStudents.html')
+	else:
+		return render(request, 'signin.html', {'form':LoginForm()})
 
 def logoutUser(request):
 	logout(request)
@@ -92,9 +95,24 @@ def logoutUser(request):
 
 
 
-
-
-
 def base(request):
 	return render(request, 'base.html', )
+
+
+def addDetailsToDB(request):
+	pdb.set_trace()
+	phoneNumbers = request.POST.get('phoneNumbers')
+	emails = request.POST.get('emails')
+	className = request.POST.get('className')
+
+	phoneNumbers = phoneNumbers.split(', ')
+	emails = emails.split(', ')
+
+	for number, email in zip(phoneNumbers, emails):
+		student = StudentInfo.get_or_create(numbber=number, email=email)
+		addClass = AddClass.objects.get_or_create(class_name=className)
+		addclass.students.add(student)
+
+		
+
 
