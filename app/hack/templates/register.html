@@ -4,6 +4,7 @@
     <title> Sign Up </title>
     <link rel="stylesheet" href="{{STATIC_URL}}/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{STATIC_URL}}/css/register.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}/css/body.css">
     <link rel="stylesheet" href="{{STATIC_URL}}/bootstrap/css/bootstrap-theme.min.css">
     <script type="text/javascript" src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -36,6 +37,7 @@
             <td class="container text-center" >{{ form.password2 | bootstrap_horizontal }}</td>
         </tr>
 
+
         </table>
         {{msg}}
 
@@ -43,6 +45,7 @@
         <input type="hidden" name="next" value="{{ next }}" />
         </form>
     </div>   
+
 
 </body>
 
