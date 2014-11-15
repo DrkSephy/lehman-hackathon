@@ -21,16 +21,159 @@
 
 <body>
 
-	<form method="POST" action="{% url 'hack.views.addClass' %}">
-	{% csrf_token %}
-		<input type="submit" id="addClassButton" value="Add New Class" style="width:700px; height:100px"/>
-	</form>
+
+{% if addNumbersMessage %}
+<div class="alert alert-success alert-dismissable">
+   <button type="button" class="close" data-dismiss="alert" 
+      aria-hidden="true">
+      &times;
+   </button>
+   {{addNumbersMessage}}
+</div>
+{% endif %}
+
+{% if notifyMessage %}
+<div class="alert alert-success alert-dismissable">
+   <button type="button" class="close" data-dismiss="alert" 
+      aria-hidden="true">
+      &times;
+   </button>
+   {{notifyMessage}}
+</div>
+{% endif %}
+
+
+<div style="margin-top:50px">
+ <h1 style="text-align:center">List of registered classes</h1>
+    <hr>
+    </div>
+<div style="margin-left:275px; margin-top:50px">
+	<!-- <form method="POST" action="{% url 'hack.views.addClass' %}"> -->
+	<!-- {% csrf_token %} -->
+		<!-- <input type="submit" class="btn btn-success" id="addClassButton" value="Add New Class" style="width:700px; height:100px"/> -->
+	<!-- </form> -->
+
+    <form method="POST" action="{% url 'hack.views.addNumbers' %}">
+    {% csrf_token %}
+        <input type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" id="addNumbersButton" value="Add Numbers" style="width:700px;"/>
+    </form>
 
 	<!--populate class for all classes in database, they will be buttons-->
 	<div class="btn-group-vertical" role="group">
 		{% for x in returnlist %}
-		<a href="{%url 'notify'%}"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel" style="width:700px">{{x}}</button></a>
+		<!-- <a href="{%url 'notify'%}" ><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-cancel" style="width:700px; margin-top:10px">{{x}}</button></a> -->
+    <form method="POST" action="{% url 'sendNotification' %}">
+        {% csrf_token %}
+        <button type="button" class="btn-selector btn btn-primary" data-toggle="modal" data-target="#notifyModal" style="width:700px; margin-top:10px">{{x}}</button></a>
+    </form>
 		{% endfor %}
 	</div>
+
+    </div>
+
+
+
+
+
+
+<!-- ADD NUMBERS MODAL -->
+    <form method='POST' action="{% url 'addDetailsToDB' %}">
+    {%csrf_token %}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Student Details</h4>
+                </div>
+                <div class="modal-body">
+                <table>
+                <tr>
+                <td>
+                Class Name:
+                </td>
+                <td>
+                {{studentDetailsForm.className}}
+                </td>
+                <tr>
+                <td>
+                    <h5>Phone Numbers:</h5>
+                    {{studentDetailsForm.phoneNumbers}}
+                </td>
+                <td style="margin-left:50px">
+                    <h5>Emails:</h5>
+                    {{studentDetailsForm.emails}}
+                    </td>
+                    </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Numbers</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- END OF END NUMBERS MODAL -->
+
+
+    <!-- NOTIFY MODAL -->
+    <form method='POST' action="{% url 'sendNotification' %}">
+    {%csrf_token %}
+    <div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Student Details</h4>
+                </div>
+                <div class="modal-body">
+                <table>
+                <tr>
+                <td>
+                Class:
+                <!-- </td> -->
+                <!-- <td> -->
+                
+                <!-- <input type="text" disabled="disabled" style="margin-left:10px" value="22"id="classLabel"/> -->
+                {{notifyForm.class_name}}
+                
+                </td>
+                <tr>
+                <td>
+                    <h5 style="padding-left:150px">Note:</h5>
+                </td>
+                </tr>
+                <tr>
+                <td style="padding-left:150px">
+                {{notifyForm.note}}
+                </td>
+                </tr>
+                </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send Notification</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- END OF NOTIFY MODAL -->
+
+
+<script>
+    $(document).ready(function(){
+        $('.btn-selector').bind('click',function(){
+            $('#id_class_name').val($(this).text())
+            
+        })
+
+    });
+
+
+</script>
+
 </body>
 </html>

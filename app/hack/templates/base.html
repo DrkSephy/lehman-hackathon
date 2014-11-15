@@ -37,7 +37,7 @@
         <li><a href="{% url 'hack.views.signin'%}">Login</a></li>
         {% endif %}
         {% if user.is_authenticated %}
-        <li><a href="{% url 'hack.views.notify'%}">Notify</a></li>
+        <!-- <li><a href="{% url 'hack.views.notify'%}">Notify</a></li> -->
         <li><a href="{% url 'hack.views.addClass'%}">Classes List</a></li>
         {% endif %}
           

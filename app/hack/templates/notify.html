@@ -38,11 +38,16 @@
 
 	</form>
 
-	<form method="POST" action="{% url 'hack.views.addNumbers' %}">
+	<!-- <form method="POST" action="{% url 'hack.views.addNumbers' %}">
 	{% csrf_token %}
+
+		<input type="button" data-toggle="modal" data-target="#myModal" id="addNumbersButton" value="Add Numbers" style="width:250px; height:100px"/>
+	</form> -->
+
 		<input class="btn btn-primary"  type="button" data-toggle="modal" data-target="#myModal" id="addNumbersButton" value="Add Numbers"  style="width:250px; height:100px"/><!---->
 		<!--<button class="btn btn-default" id="addNumbersButton" data-toggle="modal" data-target="#myModal">Add Numbers</button>-->
 	</form>
+
 
 
 	<!-- ADD NUMBERS MODAL -->
@@ -130,11 +135,16 @@
 
 
 
-	<form method="POST" action="{% url 'hack.views.logoutUser' %}">
+	<!-- <form method="POST" action="{% url 'hack.views.logoutUser' %}">
 	{% csrf_token %}
+
+		<input type="submit" id="addNumbersButton" value="Logout" style="width:250px; height:100px"/>
+	</form> -->
+
 		<!---<input class="btn btn-default"  type="submit" id="logOut" value="Logout" style="width:250px; height:100px"/>-->
 		<button class="btn btn-primary" id="logOut">Logout</button>
 	</form>
+
 
 
 	
