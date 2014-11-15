@@ -53,7 +53,7 @@ def authenticateUser(request):
 	
 	if user is not None:
 		djangoLogin(request, user)
-		return render(request, 'notify.html',{'user':user})
+		return render(request, 'addclass.html',{'user':user})
 
 	#Case username and password are incorrect
 	else:
@@ -89,6 +89,8 @@ def addNumbers(request):
 def logoutUser(request):
 	logout(request)
 
+def addClass(request):
+	print "ADD NEWW CLASS PAGE"
 
 
 
