@@ -1,5 +1,6 @@
 {% include 'base.html' %}
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,8 +19,8 @@
     <!-- <link href="{{STATIC_URL}}/css/instructor.css" rel="stylesheet"> -->
   </head>
 
-
 <body>
+
 	<form method="POST" action="{% url 'hack.views.addClass' %}">
 	{% csrf_token %}
 		<input type="submit" id="addClassButton" value="Add New Class" style="width:700px; height:100px"/>
@@ -31,6 +32,5 @@
 		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel" style="width:700px">{{x}}</button>
 		{% endfor %}
 	</div>
-
 </body>
 </html>
