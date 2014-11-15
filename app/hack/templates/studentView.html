@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+ -->
+    <!-- <title>Professor</title> -->
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="studentView.css" rel="stylesheet"> -->
+
+  <!-- </head> -->
+  {% include 'base.html' %}
+  <!-- <head> -->
+    <!-- <link rel="stylesheet" href="{{STATIC_URL}}css/studentView.css"> -->
+  <!-- </head> -->
+
+  <body style="background-color: #5A7194;">
+  <!-- nav bar for professor name, class, subscribe -->
+ 
+   <!--
+        <ul class="list-group">
+            <li class="list-group-item"> Class is cancelled January 1st 
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vestibulum velit. Duis id fringilla libero, ut volutpat eros. Pellentesque sed rhoncus sapien. Nullam non congue neque. Phasellus eget lacinia leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </li>
+            
+            <li class="list-group-item"> Class is cancelled January 1st  </li>
+
+            <li class="list-group-item"> Class is cancelled January 1st  </li>
+        </ul>
+        -->
+
+        {% for notif in notifications %}
+       <div class="panel panel-default">
+         <div class="panel-body">
+           
+            
+            {{notif.class_name}}<br>
+            {{notif.note}}
+                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vestibulum velit. Duis id fringilla libero, ut volutpat eros. Pellentesque sed rhoncus sapien. Nullam non congue neque. Phasellus eget lacinia leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+         </div>
+         <!-- <div class="panel-footer">12:45 December 15</div> -->
+         <div class="panel-footer">{{notif.timeStamp}}</div>
+       </div>
+       {% endfor %}
+
+       <!-- <div class="panel panel-default">
+         <div class="panel-body">
+           Class is cancelled January 1st 
+            <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vestibulum velit. Duis id fringilla libero, ut volutpat eros. Pellentesque sed rhoncus sapien. Nullam non congue neque. Phasellus eget lacinia leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         </div>
+         <div class="panel-footer">12:45 December 15</div>
+       </div>
+
+ -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <!-- <script src="bootstrap/dist/js/bootstrap.min.js"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
+</html>

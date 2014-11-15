@@ -30,7 +30,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul id='searchUL' class="nav navbar-nav">
       {% if not user.is_authenticated %}
         <li class="active"><a href="{%url 'registerPage' %}">Register <span class="sr-only">(current)</span></a></li>
         
@@ -43,13 +43,16 @@
           
       </ul>
       
-      <ul class="nav navbar-nav navbar-right">
+      <ul  class="nav navbar-nav navbar-right">
+
         <!-- <li><a href="#">Link</a></li> -->
           {% if user.is_authenticated %}
           <li><a>Hello {{user}}</a></li>
           <li><a href="{% url 'logoutUser' %}">Logout</a></li>
           {% endif %}
-        
+          
+          <li><a href="{% url 'userFeed' %}">Feed</a></li>
+
           </ul>
         
         
@@ -59,7 +62,30 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<!-- <form method="POST" action="{% url 'searchFeed' %}">
+  <input class="form-control" style="float:left; width:200px" type="text" value="search box"/>
+  <button type="submit" style="float:left" class="btn btn-success" value="Search">Search</button>
+  </form> -->
 
+<script type="text/javascript">
+  
+$(window).bind('load', function(){
+  var url = window.location.href
+    console.log(url)
+    if (url=='http://localhost:8000/userFeed/'){
+    // console.log("INSIDE")
+  // <input class="form-control" style="float:left; width:200px" type="text" value="search box"/>  
+  $('#searchUL').append('<form method="POST" style="margin-left:800px; margin-top:10px;" action="{% url "searchFeed" %}">  {{searchFeedForm.className}}  <button type="submit" class="btn btn-success" value="Search">Search</button> <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}" /> </form>')
+
+// <input type='hidden' name='csrfmiddlewaretoken' value='u3s4hakN8hTUeAwOCbGfgYIvoUdzrHAM' /> </form>')
+
+
+
+  }
+
+})
+
+</script>
 
  
 
