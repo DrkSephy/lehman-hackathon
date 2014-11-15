@@ -45,4 +45,12 @@ def authenticateUser(request):
 		return render(request, 'signin.html', {'form':LoginForm(), 'msg':'Incorrect username or password'})
 
 
+@csrf_protect
+def notify(request):
+	return render(request, 'notify.html')
+
+
+@csrf_protect
+def sendNotification(request):
+	print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
 
