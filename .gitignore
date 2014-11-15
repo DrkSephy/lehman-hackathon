@@ -7,3 +7,4 @@ app/hack/admin.pyc
 app/hack/migrations/__init__.pyc
 app/hack/models.pyc
 app/hack/views.pyc
+app/db.sqlite3
