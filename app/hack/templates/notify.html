@@ -10,6 +10,17 @@
 		<input type="submit" id="notifyButton" value="notify" style="width:250px; height:100px"/>
 	</form>
 
+	<form method="POST" action="{% url 'hack.views.addNumbers' %}">
+	{% csrf_token %}
+		<input type="submit" id="addNumbersButton" value="Add Numbers" style="width:250px; height:100px"/>
+	</form>
+
+	<form method="POST" action="{% url 'hack.views.logoutUser' %}">
+	{% csrf_token %}
+		<input type="submit" id="addNumbersButton" value="Logout" style="width:250px; height:100px"/>
+	</form>
+
+
 </body>
 
 </html>
