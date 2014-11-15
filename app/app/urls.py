@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     )),
     # url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}),
+
+    url(r'^login/','hack.views.login', name='login'),
     # rest of your URLs as normal
 # )
 
