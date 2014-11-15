@@ -25,7 +25,7 @@ def login(request):
 		user = User.objects.create_user(username=username, password=password1)
 		user.save()
 	
-	return render(request, 'signin.html')
+	return render(request, 'signin.html', {'form':LoginForm})
 
 
 def signin(request):
@@ -39,7 +39,7 @@ def authenticateUser(request):
 	
 	user = authenticate(username=username, password=password)
 	if user is not None:
-		print "DSJFHSDKJHFSKJDHFKLJSDFHKLSDJHFLSKDJHFDSJK"
+		return render(request, 'notify.html')
 
 	else:
 		return render(request, 'signin.html', {'form':LoginForm(), 'msg':'Incorrect username or password'})
