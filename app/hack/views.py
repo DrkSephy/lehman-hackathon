@@ -63,23 +63,27 @@ def authenticateUser(request):
 @csrf_protect
 def notify(request):
 	if request.user.is_authenticated():
-		return render(request, 'notify.html', {'form':StudentDetails()})
+		return render(request, 'notify.html', {'form':StudentDetails(), 'notifyForm':SendNotification()})
 
 
 @csrf_protect
 def sendNotification(request):
-
 	if request.user.is_authenticated():
-		print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
 
-	subject = 'Email Subject'
-	msg_body = 'This is a test e-mail'
-	recipient = ['nsbehackathon2014@gmail.com', 'cafe.mui@gmail.com', 'lsxliron@gmail.com', 'fitzgeralda2010@gmail.com', 'sephirothcloud1025@yahoo.com', 'ian.s.mcb@gmail.com']
-	for r in recipient:
-		send_email(subject, msg_body, r)	
-	numbers = ['+13473282978']
-	sendMessage(numbers)
-	print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
+		className = str(request.POST.get('class_name'))
+		note = request.POST.get('note')
+
+		subject = "{cn} is canceled".format(cn=className)
+		msg_body = 'Dear students, our class is canceled.\n\n\n{note}'.format(note=note)
+		recipient = AddClass.objects.filter(class_name=className)[0].students
+		
+		for rec in recipient.all():
+			send_email(subject, msg_body, str(rec.email))	
+			sendMessage(className, rec.number)
+
+		return render(request, 'notify.html', {"notifyMsg":"Messages sent successfully."})
+
+
 
 
 def addNumbers(request):
