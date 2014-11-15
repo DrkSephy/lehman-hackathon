@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Notify</title>
+</head>
+
+<body>
+	<form method="POST" action="{% url 'hack.views.sendNotification' %}">
+	{% csrf_token %}
+		<input type="submit" id="notifyButton" value="notify" style="width:250px; height:100px"/>
+	</form>
+
+</body>
+
+</html>
