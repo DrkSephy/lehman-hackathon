@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Add Class</title>
+</head>
+
+<body>
+	<form method="POST" action="{% url 'hack.views.addClass' %}">
+	{% csrf_token %}
+		<input type="submit" id="addClassButton" value="Add New Class" style="width:250px; height:100px"/>
+	</form>
+</body>
+
+</html>
