@@ -23,7 +23,8 @@ urlpatterns = patterns('',
     url(r'^login/','hack.views.login', name='login'),
     url(r'^signin/','hack.views.signin', name='signin'),
     url(r'^authenticateUser/','hack.views.authenticateUser', name='authenticateUser'),
-    # rest of your URLs as normal
+    url(r'^notify/','hack.views.notify', name='notify'),
+    url(r'^sendNotification/','hack.views.sendNotification', name='sendNotification'),
 # )
 
 )

@@ -1,8 +1,5 @@
 from twilio.rest import TwilioRestClient
 
-
-
-
 def sendMessage(numbers):
 	"""
 	Sends SMS to a list of numbers.

@@ -1,12 +1,11 @@
+import pdb
+from forms import *
+from models import *
+from send_sms import *
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-import pdb
 from django.contrib.auth.forms import UserCreationForm
-from models import *
 from django.views.decorators.csrf import csrf_protect
-from forms import *
-
-
 
 # Create your views here.
 
@@ -25,7 +24,7 @@ def login(request):
 		user = User.objects.create_user(username=username, password=password1)
 		user.save()
 	
-	return render(request, 'signin.html')
+	return render(request, 'signin.html', {'form':LoginForm})
 
 
 def signin(request):
@@ -39,10 +38,18 @@ def authenticateUser(request):
 	
 	user = authenticate(username=username, password=password)
 	if user is not None:
-		print "DSJFHSDKJHFSKJDHFKLJSDFHKLSDJHFLSKDJHFDSJK"
+		return render(request, 'notify.html')
 
 	else:
 		return render(request, 'signin.html', {'form':LoginForm(), 'msg':'Incorrect username or password'})
 
 
+@csrf_protect
+def notify(request):
+	return render(request, 'notify.html')
+
+
+@csrf_protect
+def sendNotification(request):
+	print "\n\n\t\t\tNOTIFICATION SENT!!!\n\n"
 
