@@ -109,11 +109,14 @@ def addDetailsToDB(request):
 
 	phoneNumbers = phoneNumbers.split(', ')
 	emails = emails.split(', ')
-
+	
+	addClass = AddClass.objects.get_or_create(class_name=className)[0]
+	
 	for number, email in zip(phoneNumbers, emails):
-		student = StudentInfo.get_or_create(numbber=number, email=email)
-		addClass = AddClass.objects.get_or_create(class_name=className)
-		addclass.students.add(student)
+		student = StudentInfo.objects.get_or_create(number=str(number), email=str(email))	[0]
+		addClass.students.add(student)
+
+	return render(request, 'notify.html', {"msg":"Numbers added successfully"})
 
 		
 
