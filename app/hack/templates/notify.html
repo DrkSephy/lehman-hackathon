@@ -6,11 +6,36 @@
 
 {% include 'base.html' %}
 <body>
-	<div class="container text-center btn-group-vertical">
+
+{% if msg%}
+<div class="alert alert-success alert-dismissable">
+   <button type="button" class="close" data-dismiss="alert" 
+      aria-hidden="true">
+      &times;
+   </button>
+   {{msg}}
+</div>
+{% endif %}
+
+
+{% if notifyMsg %}
+<div class="alert alert-success alert-dismissable">
+   <button type="button" class="close" data-dismiss="alert" 
+      aria-hidden="true">
+      &times;
+   </button>
+   {{notifyMsg}}
+</div>
+{% endif %}
+	
+
+
+
+
 	<form method="POST" action="{% url 'hack.views.sendNotification' %}">
 	{% csrf_token %}
-		<!--<input class="btn btn-default" type="submit" id="notifyButton" value="notify" style="width:250px; height:100px"/>-->
-		<button class="btn btn-primary" id="notifyButton">Notify</button>
+		<input type="button" id="notifyButton" data-toggle="modal" data-target="#notifyModal" value="notify" style="width:250px; height:100px"/>
+
 	</form>
 
 	<form method="POST" action="{% url 'hack.views.addNumbers' %}">
@@ -34,7 +59,7 @@
 				<table>
 				<tr>
 				<td>
-				{{form.className.label_tag}}
+				Class Name:
 				</td>
 				<td>
 				{{form.className}}
@@ -53,21 +78,67 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="submit" class="btn btn-primary">Save Numbers</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	</form>
+	<!-- END OF END NUMBERS MODAL -->
+
+
+
+	<!-- NOTIFY MODAL -->
+	<form method='POST' action="{% url 'sendNotification' %}">
+	{%csrf_token %}
+	<div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Student Details</h4>
+				</div>
+				<div class="modal-body">
+				<table>
+				<tr>
+				<td>
+				Class
+				</td>
+				<td>
+				{{notifyForm.class_name}}
+				</td>
+				<tr>
+				<td>
+					<h5>Note:</h5>
+					{{notifyForm.note}}
+				</td>
+				</tr>
+				</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Send Notification</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+	<!-- END OF NOTIFY MODAL -->
+
+
+
+
+
 
 	<form method="POST" action="{% url 'hack.views.logoutUser' %}">
 	{% csrf_token %}
 		<!---<input class="btn btn-default"  type="submit" id="logOut" value="Logout" style="width:250px; height:100px"/>-->
 		<button class="btn btn-primary" id="logOut">Logout</button>
 	</form>
+
+
 	
-	</div>
-	{{msg}}
+
 </body>
 
 </html>
