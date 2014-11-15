@@ -14,4 +14,4 @@ class StudentInfo(models.Model):
 	email = models.CharField(max_length=200)
 
 	def __unicode__(self):
-		return self.email, self.number
+		return self.email
