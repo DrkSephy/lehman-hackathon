@@ -53,7 +53,7 @@ def authenticateUser(request):
 	
 	if user is not None:
 		djangoLogin(request, user)
-		return render(request, 'addclass.html',{'user':user, 'returnlist': AddClass.objects.all()})
+		return render(request, 'notify.html',{'user':user, 'returnlist': AddClass.objects.all()})
 
 	#Case username and password are incorrect
 	else:
@@ -94,7 +94,8 @@ def logoutUser(request):
 	return render(request, 'signin.html', {'form':LoginForm()})
 
 def addClass(request):
-	print "ADD NEWW CLASS PAGE"
+	# print "ADD NEWW CLASS PAGE"
+	return render(request, 'addclass.html',{'user':request.user, 'returnlist': AddClass.objects.all()})
 
 
 def base(request):
@@ -102,7 +103,7 @@ def base(request):
 
 
 def addDetailsToDB(request):
-	pdb.set_trace()
+	# pdb.set_trace()
 	phoneNumbers = request.POST.get('phoneNumbers')
 	emails = request.POST.get('emails')
 	className = request.POST.get('className')
